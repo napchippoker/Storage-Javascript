@@ -1,5 +1,5 @@
 // Constants
-const SHEET_ID = '18iOdzpTqdkGYY-Y2-8H0HKz3aFWVdUIQXLo4r84NK0A';
+const SHEET_ID = '1Zebh-8FerNoGurfyqQP-pcSFFT_CXAcnh1I-GFHpv_c';
 const SHEET_TITLE = 'Sheet1';
 const SHEET_RANGE = 'A:L';
 const BANK_CODE = 'MB';
@@ -7,7 +7,7 @@ const ACCOUNT_NUMBER = '0389124412';
 const ACCOUNT_NAME = 'LE THI BICH HANH';
 const BANK_NAME = 'MB BANK';
 const SUBMIT_COOLDOWN = 5000;
-const API_URL = 'https://script.google.com/macros/s/AKfycbwFPie9uHGv9ZxYMG0CurgdDA9YuqzP37zdyJ8kCS35avXTINZfzgKnV_D_bKrb9kZe/exec';
+const API_URL = 'https://script.google.com/macros/s/AKfycbyUHh84KAvV27u15X8rwGHq36PM-x6Dy5hgPLAEwKqIyg8kC5IQ3NJVVc05p_hp0XE5aQ/exec';
 
 // Amount buttons configuration
 const amounts = [50000, 100000, 200000, 500000, 1000000, 2000000];
