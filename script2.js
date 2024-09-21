@@ -375,7 +375,7 @@ function startCheckingPaymentStatus(email) {
                 // Ẩn QR code
                 document.getElementById('GROUP121').style = 'display:none !important';
                 // Hiển thị GROUP120
-                document.getElementById('GROUP125').style = 'display:block !important';
+                document.getElementById('GROUP127').style = 'display:block !important';
                 document.getElementById('SECTION1').style = 'height: 450px;'
                 document.getElementById('message').innerHTML = '';
             }
