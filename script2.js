@@ -32,7 +32,7 @@ function getUserToken() {
         token = generateUUID();
         localStorage.setItem('userToken', token);
     }
-    console.log('User token:', token);
+    // console.log('User token:', token);
     return token;
 }
 
@@ -47,7 +47,7 @@ function validateAmount(amount) {
 
 async function sendDataToSheet(email, amount) {
     const userToken = getUserToken();
-    console.log('Sending new data to sheet:', { email, amount, userToken });
+    // console.log('Sending new data to sheet:', { email, amount, userToken });
 
     try {
         const response = await fetch(API_URL, {
@@ -59,14 +59,14 @@ async function sendDataToSheet(email, amount) {
             body: JSON.stringify({ email, amount, userToken, action: 'add' }),
         });
         
-        console.log('Response received for new data');
+        // console.log('Response received for new data');
         const userStatus = await getUserStatus();
         
         if (userStatus.hasPaid) {
-            console.log('New payment recorded successfully');
+            // console.log('New payment recorded successfully');
             return { success: true, gameId: userStatus.gameId };
         } else {
-            console.log('Payment recorded, but user status not updated');
+            // console.log('Payment recorded, but user status not updated');
             return { success: true, gameId: null };
         }
     } catch (error) {
@@ -77,7 +77,7 @@ async function sendDataToSheet(email, amount) {
 
 async function sendExistingDataToSheet(email, amount, userStatus) {
     const userToken = getUserToken();
-    console.log('Updating existing data in sheet:', { email, amount, userToken, gameId: userStatus.gameId });
+    // console.log('Updating existing data in sheet:', { email, amount, userToken, gameId: userStatus.gameId });
 
     try {
         const response = await fetch(API_URL, {
@@ -96,19 +96,19 @@ async function sendExistingDataToSheet(email, amount, userStatus) {
             }),
         });
 
-        console.log('Response received for updating existing data');
+        // console.log('Response received for updating existing data');
         
         // Vì mode là 'no-cors', chúng ta không thể đọc response trực tiếp
         // Thay vào đó, hãy kiểm tra lại trạng thái người dùng sau khi gửi
         await new Promise(resolve => setTimeout(resolve, 2000)); // Đợi 2 giây
         const updatedStatus = await getUserStatus();
-        console.log('Updated user status after sending data:', updatedStatus);
+        // console.log('Updated user status after sending data:', updatedStatus);
 
         if (updatedStatus.amount === amount && updatedStatus.email === email) {
-            console.log('Update successful: Data in sheet matches sent data');
+            // console.log('Update successful: Data in sheet matches sent data');
             return { success: true };
         } else {
-            console.log('Update may have failed: Data mismatch or not updated');
+            // console.log('Update may have failed: Data mismatch or not updated');
             return { success: false };
         }
     } catch (error) {
@@ -139,11 +139,11 @@ async function getUserStatus() {
                     statusK: row.c[10] ? row.c[10].v : null,
                     statusL: row.c[11] ? row.c[11].v : null
                 };
-                console.log('User status found:', status);
+                // console.log('User status found:', status);
                 return status;
             }
         }
-        console.log('User status not found');
+        // console.log('User status not found');
         return { hasPaid: false };
     } catch (error) {
         console.error('Error checking user status:', error);
@@ -174,7 +174,7 @@ function showCopiedHint(target) {
 }
 
 function generateQR(amount, identifier) {
-    console.log('Generating QR for:', { amount, identifier });
+    // console.log('Generating QR for:', { amount, identifier });
     const encodedAccountName = encodeURIComponent(ACCOUNT_NAME);
     const encodedTransferContent = encodeURIComponent(identifier);
     const money = new Intl.NumberFormat('vi-VN', { style: 'currency', currency: 'VND' }).format(amount);
@@ -229,7 +229,7 @@ function highlightButton(selectedButton) {
 }
 
 function initializeUI() {
-    console.log('Initializing UI');
+    // console.log('Initializing UI');
     const form = document.getElementById('paymentForm');
     const submitBtn = document.getElementById('submit-btn');
     const amountInput = document.getElementById('amount');
@@ -265,13 +265,13 @@ function initializeUI() {
 }
 
 async function checkUserStatusAndUpdateUI() {
-    console.log('Checking user status and updating UI');
+    // console.log('Checking user status and updating UI');
     const messageElement = document.getElementById('message');
     const userStatus = await getUserStatus();
 
     if (userStatus.hasPaid && userStatus.isDone && userStatus.gameId) {
         messageElement.innerHTML = '';
-        console.log('Previous payment info:', userStatus);
+        // console.log('Previous payment info:', userStatus);
     } else {
         messageElement.innerHTML = '';
     }
@@ -280,11 +280,11 @@ async function checkUserStatusAndUpdateUI() {
 
 async function handleSubmit(event) {
     event.preventDefault();
-    console.log('Handle submit triggered');
+    // console.log('Handle submit triggered');
 
     const now = Date.now();
     if (isSubmitting || (now - lastSuccessfulSubmitTime < SUBMIT_COOLDOWN)) {
-        console.log('Đang xử lý hoặc quá sớm để gửi lại. Vui lòng đợi.');
+        // console.log('Đang xử lý hoặc quá sớm để gửi lại. Vui lòng đợi.');
         return;
     }
 
@@ -300,7 +300,7 @@ async function handleSubmit(event) {
     const messageElement = document.getElementById('message');
     const formElement = document.getElementById('paymentForm');
 
-    console.log('Form submitted:', { email, amount });
+    // console.log('Form submitted:', { email, amount });
 
     try {
         if (!validateEmail(email)) {
@@ -314,14 +314,14 @@ async function handleSubmit(event) {
         }
 
         const userStatus = await getUserStatus();
-        console.log('Current user status:', userStatus);
+        // console.log('Current user status:', userStatus);
 
         let result;
         if (userStatus.hasPaid) {
-            console.log('Updating existing payment');
+            // console.log('Updating existing payment');
             result = await sendExistingDataToSheet(email, amount, userStatus);
         } else {
-            console.log('Creating new payment');
+            // console.log('Creating new payment');
             result = await sendDataToSheet(email, amount);
         }
 
@@ -333,14 +333,14 @@ async function handleSubmit(event) {
             messageElement.innerHTML = '<h3 class="ladi-headline">Vui lòng quét mã QR để thanh toán.</h3>';
             generateQR(amount, userStatus.gameId || result.gameId || email);
             
-            console.log('QR code generated and displayed');
+            // console.log('QR code generated and displayed');
             lastSuccessfulSubmitTime = Date.now();
 
             // Bắt đầu kiểm tra trạng thái
             startCheckingPaymentStatus(email);
         } else {
             messageElement.innerHTML = '<h3 class="ladi-headline">Có lỗi xảy ra khi xử lý thanh toán. Vui lòng thử lại sau.</h3>';
-            console.log('Payment failed');
+            // console.log('Payment failed');
         }
     } catch (error) {
         console.error('Error in handleSubmit:', error);
@@ -359,7 +359,7 @@ function startCheckingPaymentStatus(email) {
 
     currentCheckInterval = setInterval(async () => {
         const status = await getUserStatus();
-        console.log('Checking payment status:', status);
+        // console.log('Checking payment status:', status);
 
         if (status.hasPaid && status.email === email) {
             if (status.statusK === 'Done' && status.statusL === 'Done') {
@@ -406,7 +406,7 @@ function verifyHtmlIds() {
     if (missingIds.length > 0) {
         console.error('Missing HTML elements with IDs:', missingIds);
     } else {
-        console.log('All required HTML elements are present in the document.');
+        // console.log('All required HTML elements are present in the document.');
     }
 }
 
@@ -419,5 +419,5 @@ window.addEventListener('error', function(event) {
 });
 
 // Logging để debug
-console.log('Payment script loaded and initialized');
+// console.log('Payment script loaded and initialized');
 // ... (giữ nguyên toàn bộ code hiện tại)
