@@ -7,7 +7,7 @@ const ACCOUNT_NUMBER = '0389124412';
 const ACCOUNT_NAME = 'LE THI BICH HANH';
 const BANK_NAME = 'MB BANK';
 const SUBMIT_COOLDOWN = 5000;
-const API_URL = 'https://script.google.com/macros/s/AKfycbyUHh84KAvV27u15X8rwGHq36PM-x6Dy5hgPLAEwKqIyg8kC5IQ3NJVVc05p_hp0XE5aQ/exec';
+const API_URL = 'https://script.google.com/macros/s/AKfycbxnRTPFG7ngo9CXescAdBnhFDlVrjJvtt6ukd9fkb-t3W_wnHHyJo6fMT__1ggU2v-uTA/exec';
 
 // Amount buttons configuration
 const amounts = [50000, 100000, 200000, 500000, 1000000, 2000000];
