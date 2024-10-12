@@ -49,6 +49,7 @@ function generateQR(amount, identifier) {
     document.getElementById('qrCodeContainer').querySelector('.ladi-image-background').style = `background-image: url("${qrUrl}")!important`;
     document.getElementById('GROUP107').style = 'display:block!important';
     document.getElementById('GROUP118').style = 'display:none!important';
+    document.getElementById('GROUP131').style = 'display:none !important';
     document.getElementById('qrCodeContainer').style = 'display:block!important';
     document.getElementById('GROUP105').style = 'display:block!important';
     document.getElementById('GROUP39').style = 'display:none!important';
