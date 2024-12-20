@@ -1,8 +1,8 @@
 // Constants
-// const BANK_CODE = 'MB';
-// const ACCOUNT_NUMBER = '0389124412';
-// const ACCOUNT_NAME = 'LE THI BICH HANH';
-// const BANK_NAME = 'MB BANK';
+const BANK_CODE = 'None';
+ const ACCOUNT_NUMBER = 'Join CLb';
+ const ACCOUNT_NAME = 'AllintvClub';
+ const BANK_NAME = 'None';
 const SUBMIT_COOLDOWN = 5000;
 
 // Amount buttons configuration
