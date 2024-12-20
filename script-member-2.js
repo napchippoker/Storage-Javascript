@@ -1,8 +1,12 @@
 // Constants
-const BANK_CODE = 'None';
- const ACCOUNT_NUMBER = 'Join CLb';
- const ACCOUNT_NAME = 'AllintvClub';
- const BANK_NAME = 'None';
+const BANK_CODE = 'Liên Hệ Telegram @allintvclub
+';
+const ACCOUNT_NUMBER = 'Liên Hệ Telegram @allintvclub
+';
+const ACCOUNT_NAME = 'Liên Hệ Telegram @allintvclub
+';
+const BANK_NAME = 'Liên Hệ Telegram @allintvclub
+';
 const SUBMIT_COOLDOWN = 5000;
 
 // Amount buttons configuration
