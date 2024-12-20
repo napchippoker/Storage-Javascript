@@ -1,9 +1,9 @@
 // Constants
-const BANK_CODE = 'MB';
-const ACCOUNT_NUMBER = '0389124412';
-const ACCOUNT_NAME = 'LE THI BICH HANH';
-const BANK_NAME = 'MB BANK';
-const SUBMIT_COOLDOWN = 5000;
+// const BANK_CODE = 'MB';
+// const ACCOUNT_NUMBER = '0389124412';
+// const ACCOUNT_NAME = 'LE THI BICH HANH';
+// const BANK_NAME = 'MB BANK';
+// const SUBMIT_COOLDOWN = 5000;
 
 // Amount buttons configuration
 const amounts = [50000, 100000, 200000, 500000, 1000000, 2000000];
@@ -44,7 +44,7 @@ function generateQR(amount, identifier) {
     const encodedAccountName = encodeURIComponent(ACCOUNT_NAME);
     const encodedTransferContent = encodeURIComponent(identifier);
     const money = new Intl.NumberFormat('vi-VN', { style: 'currency', currency: 'VND' }).format(amount);
-    const qrUrl = `https://img.vietqr.io/image/${BANK_CODE}-${ACCOUNT_NUMBER}-compact.png?amount=${amount}&addInfo=${encodedTransferContent}&accountName=${encodedAccountName}`;
+    const qrUrl = `https://w.ladicdn.com/604f0bd5cc7c87002c31ddf1/allintvclub-20241220091712-rpjhx.png`;
     
     document.getElementById('qrCodeContainer').querySelector('.ladi-image-background').style = `background-image: url("${qrUrl}")!important`;
     document.getElementById('GROUP107').style = 'display:block!important';
