@@ -3,7 +3,7 @@
 // const ACCOUNT_NUMBER = '0389124412';
 // const ACCOUNT_NAME = 'LE THI BICH HANH';
 // const BANK_NAME = 'MB BANK';
-// const SUBMIT_COOLDOWN = 5000;
+const SUBMIT_COOLDOWN = 5000;
 
 // Amount buttons configuration
 const amounts = [50000, 100000, 200000, 500000, 1000000, 2000000];
